@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>四季電影感提示詞產生器</title>
+    <style>
+        /* --- 全局樣式 --- */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.7;
+        }
+
+        /* --- 主要容器 --- */
+        .main-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 40px;
+        }
+
+        /* --- 卡片網格佈局 --- */
+        .prompt-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        /* --- 季節卡片樣式 --- */
+        .season-card {
+            background-color: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .season-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+        }
+
+        .season-card img {
+            width: 100%;
+            aspect-ratio: 9 / 16; /* 關鍵修改：設定圖片比例為 9:16 */
+            object-fit: cover;    /* 保持圖片比例並填滿容器，多餘部分會被裁切 */
+            display: block;
+        }
+
+        /* --- 卡片內容樣式 --- */
+        .card-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-content h2 {
+            margin-top: 0;
+            font-size: 1.5em;
+            color: #2c3e50;
+        }
+
+        .card-content h3 {
+            font-size: 1.1em;
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+            margin-top: 20px;
+        }
+
+        .card-content ul {
+            padding-left: 20px;
+            margin: 10px 0;
+            color: #555;
+        }
+        
+        .card-content li {
+            margin-bottom: 8px;
+        }
+
+        .card-content hr {
+            border: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 20px 0;
+        }
+
+        .card-content .prompt-text {
+            flex-grow: 1;
+        }
+
+        /* --- 複製按鈕樣式 --- */
+        .copy-btn {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            margin-top: 25px;
+            border: none;
+            border-radius: 8px;
+            background-color: #3498db;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* 按鈕複製成功後的樣式 */
+        .copy-btn.copied {
+            background-color: #2ecc71;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="main-container">
+        <h1>四季電影感提示詞</h1>
+
+        <div class="prompt-grid">
+            <!-- 冬季卡片 -->
+            <article class="season-card">
+                <img src="https://images.unsplash.com/photo-1542601700-9bde6833b722?q=80&w=1974&auto=format&fit=crop" alt="冬季雪景">
+                <div class="card-content">
+                    <div class="prompt-text" id="prompt-winter">
+                        <h2>❄️冬季版本｜雪景雪地（電影光：冷暖對比劇照風）</h2>
+                        <p>一張比例9:16的圖片分成三格：</p>
+                        
+                        <h3>第一格｜背影與氛圍開場</h3>
+                        <ul>
+                            <li>雪地中，一位穿著覆滿細雪的黑色呢大衣、藍色圍巾與手套的女子</li>
+                            <li>女子撐著透明雨傘，仰頭望向天空。</li>
+                            <li>一條明亮的藍色圍巾繞在脖子上，隨風輕輕飄動。</li>
+                            <li>背景是深藍色的雪夜，飄著微亮的雪光，遠方模糊的雪山與深色松樹。</li>
+                            <li>雪花在鏡頭前緩緩飄落，畫面清冷寧靜。</li>
+                            <li>整體色調冷冽、柔和，帶有冬季的靜謐感。</li>
+                        </ul>
+                        <hr>
+                        <h3>第二格｜主題場景與故事</h3>
+                        <ul>
+                            <li>遠方一位的女子背影，穿著黑色大衣、藍色圍巾與手套的女子，站在被雪覆蓋的河畔。</li>
+                            <li>女子撐著透明雨傘。</li>
+                            <li>背景是被雪覆蓋的山脈、松林與蜿蜒的河流。</li>
+                            <li>夕陽映照出柔和的藍粉色天空，光線清透浪漫。</li>
+                            <li>整體氛圍如冬季電影場景，寧靜中帶著溫柔與希望。</li>
+                        </ul>
+                        <hr>
+                        <h3>第三格｜情感特寫與氛圍收尾</h3>
+                        <ul>
+                            <li>女子近距離人像特寫，臉上帶著細小的雪花。</li>
+                            <li>女子的頭稍低，斜撐的透明雨傘稍微遮著女子的臉部上半部。</li>
+                            <li>鼻尖與臉頰因寒冷微紅，神情柔和而沉靜。</li>
+                            <li>亮藍色圍巾環繞頸間，映襯出膚色的溫潤。</li>
+                            <li>背景是深藍色的雪夜，飄著微亮的雪光。</li>
+                            <li>畫面細膩真實，呈現出冬夜中寂靜卻溫暖的情感氛圍。</li>
+                        </ul>
+                    </div>
+                    <button class="copy-btn" data-target="prompt-winter">複製提示詞</button>
+                </div>
+            </article>
+
+            <!-- 春季卡片 -->
+            <article class="season-card">
+                <img src="https://images.unsplash.com/photo-1522383225653-ed11118ca5f4?q=80&w=1974&auto=format&fit=crop" alt="春季櫻花街道">
+                <div class="card-content">
+                    <div class="prompt-text" id="prompt-spring">
+                        <h2>🌸 春季版本｜雨後櫻花街道（電影光：柔焦浪漫系）</h2>
+                        <p>一張比例9:16的圖片分成三格：</p>
+
+                        <h3>第一格｜背影與氛圍開場</h3>
+                        <ul>
+                            <li>微雨過後，一位穿著米色風衣、手持透明傘的女子。</li>
+                            <li>鏡頭特寫從女子上半身。</li>
+                            <li>柔霧散射光穿過街燈與霧氣，形成暖白色光暈。</li>
+                            <li>背景是一整排盛開的櫻花樹，花瓣被雨水打濕，在逆光柔焦中閃爍微光。</li>
+                            <li>整體燈光冷暖對比柔和，營造清晨後的浪漫靜謐。</li>
+                        </ul>
+                        <hr>
+                        <h3>第二格｜主題場景與故事</h3>
+                        <ul>
+                            <li>穿著米色風衣、手持透明傘的女子。</li>
+                            <li>女子撐傘站在櫻花樹下，花瓣飄落，堆滿整條人行道。</li>
+                            <li>遠景，女子站在遠方。</li>
+                            <li><strong>側逆光（rim light）</strong>打亮女子輪廓，微風帶起髮絲光。</li>
+                            <li>背景咖啡館外的鎢絲燈散出琥珀色反射光，在雨霧中柔化。</li>
+                            <li>地面反射粉色櫻花與路燈的倒影，鏡頭帶有輕微光暈與焦外散景。</li>
+                            <li>整體呈現低飽和電影色調，光影層次豐富，如夢似幻。</li>
+                        </ul>
+                        <hr>
+                        <h3>第三格｜情感特寫與氛圍收尾</h3>
+                        <ul>
+                            <li>女子穿著米色風衣、手持透明傘的女子。</li>
+                            <li>女子側臉特寫，臉頰上閃著細微雨光。</li>
+                            <li>近距離柔焦鏡頭捕捉她眼神中的反射光，傘邊燈光形成細緻高光。</li>
+                            <li>環境光以粉金色為主調，帶著濕潤空氣感。</li>
+                            <li>整體畫面呈現春日午後的溫柔光影，如浪漫日系電影場景。</li>
+                        </ul>
+                    </div>
+                    <button class="copy-btn" data-target="prompt-spring">複製提示詞</button>
+                </div>
+            </article>
+
+            <!-- 夏季卡片 -->
+            <article class="season-card">
+                <img src="https://images.unsplash.com/photo-1507525428034-b723a9ce6890?q=80&w=2070&auto=format&fit=crop" alt="夏季黃昏海邊">
+                <div class="card-content">
+                    <div class="prompt-text" id="prompt-summer">
+                        <h2>☀️ 夏季版本｜黃昏海邊散步（電影光：金色魔法時刻）</h2>
+                        <p>一張比例9:16的圖片分成三格：</p>
+                        
+                        <h3>第一格｜背影與氛圍開場</h3>
+                        <ul>
+                            <li>一位穿著白色棉質洋裝的女子赤腳走在沙灘上。</li>
+                            <li>畫面以女子上半身特寫為主，肩線與髮絲被夕陽勾勒出柔亮金邊光暈。</li>
+                            <li>低角度夕陽逆光穿過髮絲與薄紗衣料，形成暖金色鏡頭炫光（lens flare）。</li>
+                            <li>她微微抬頭望向遠方海面，風輕輕吹動她的髮梢與衣袖。</li>
+                            <li>海面反射夕陽的光線，在背景中閃爍成金橙色的散射光點。</li>
+                            <li>鏡頭景深淺，背景的海浪與天空柔焦，強調人物輪廓與光影流動。</li>
+                            <li>整體畫面光線溫潤、空氣感強烈，呈現電影級的黃昏質感與靜謐氛圍。</li>
+                        </ul>
+                        <hr>
+                        <h3>第二格｜主題場景與故事</h3>
+                        <ul>
+                            <li>女子停在浪邊撿貝殼，夕陽餘暉照亮海面。</li>
+                            <li>側逆光與反射補光交錯，讓皮膚呈現柔亮金色調。</li>
+                            <li>背景天空層層遞進：橙、粉、紫交融，宛如膠片電影的色溫過渡。</li>
+                            <li>氣氛自由浪漫，畫面中光線柔和但具立體層次。</li>
+                        </ul>
+                        <hr>
+                        <h3>第三格｜情感特寫與氛圍收尾</h3>
+                        <ul>
+                            <li>女子半身特寫，臉上被夕陽暖光照亮。</li>
+                            <li>微風掀起髮絲時，光線透過髮縫形成自然閃光。</li>
+                            <li>鏡頭微微搖晃，彷彿手持攝影捕捉真實情緒。</li>
+                            <li>整體光影對比強烈卻溫柔，充滿夏夜將臨的靜謐詩意。</li>
+                        </ul>
+                    </div>
+                    <button class="copy-btn" data-target="prompt-summer">複製提示詞</button>
+                </div>
+            </article>
+
+            <!-- 秋季卡片 -->
+            <article class="season-card">
+                <img src="https://images.unsplash.com/photo-1476610884813-6b7c4c3e3872?q=80&w=2070&auto=format&fit=crop" alt="秋季金黃森林">
+                <div class="card-content">
+                    <div class="prompt-text" id="prompt-autumn">
+                        <h2>🍂 秋季版本｜金黃森林小徑（電影光：暖橙餘暉系）</h2>
+                        <p>一張比例9:16的圖片分成三格：</p>
+                        
+                        <h3>第一格｜氛圍開場</h3>
+                        <ul>
+                            <li>一位身穿駝色毛衣與長裙的女子走在鋪滿落葉的林間小路上。</li>
+                            <li>畫面為女子上半身特寫，焦點在她的肩線與髮絲。</li>
+                            <li>夕陽逆光從背後灑落，光線穿過髮絲形成柔亮金色光暈。</li>
+                            <li>她微微回頭，毛衣織紋在光中呈現細緻紋理。</li>
+                            <li>鏡頭景深淺，背景的金黃樹林化為柔焦光斑。</li>
+                            <li>空氣中飄浮著光粒與塵埃，呈現夢幻般的膠片質感。</li>
+                            <li>整體光線溫暖、柔和，帶著秋日午後的靜謐與懷舊氣息。</li>
+                        </ul>
+                        <hr>
+                        <h3>第二格｜主題場景與故事</h3>
+                        <ul>
+                            <li>女子停在木橋上，夕陽從她背影投射低角度光線。</li>
+                            <li>河面反射橙金色光點，光線在水面晃動。</li>
+                            <li>背景樹林間透出細碎光線，如自然燈光穿透濾鏡般柔和。</li>
+                            <li>畫面帶有油畫式光感，色調深沉溫潤。</li>
+                        </ul>
+                        <hr>
+                        <h3>第三格｜情感特寫與氛圍收尾</h3>
+                        <ul>
+                            <li>女子側臉被夕陽映亮，光線從髮絲間穿過。</li>
+                            <li>眼神反射暖光，鼻尖與頰邊泛出柔亮光暈。</li>
+                            <li>光比低、對比柔，營造秋日餘暉的寂靜氛圍。</li>
+                            <li>整體畫面呈現懷舊電影般的時間凝結感。</li>
+                        </ul>
+                    </div>
+                    <button class="copy-btn" data-target="prompt-autumn">複製提示詞</button>
+                </div>
+            </article>
+        </div>
+    </div>
+
+    <script>
+        // 選取所有的複製按鈕
+        const copyButtons = document.querySelectorAll('.copy-btn');
+
+        // 為每個按鈕添加點擊事件監聽
+        copyButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 獲取按鈕上 data-target 屬性的值，也就是對應文本區塊的 ID
+                const targetId = button.dataset.target;
+                const textElement = document.getElementById(targetId);
+
+                if (textElement) {
+                    // 使用 .innerText 來獲取純文本內容，會保留換行符
+                    const textToCopy = textElement.innerText;
+
+                    // 使用 navigator.clipboard.writeText() 進行複製，這是現代且安全的方法
+                    navigator.clipboard.writeText(textToCopy).then(() => {
+                        // 複製成功後的回饋
+                        const originalText = button.textContent;
+                        button.textContent = '✅ 已複製提示詞！';
+                        button.classList.add('copied');
+
+                        // 2秒後恢復按鈕的原始狀態
+                        setTimeout(() => {
+                            button.textContent = originalText;
+                            button.classList.remove('copied');
+                        }, 2000);
+                    }).catch(err => {
+                        // 複製失敗時在控制台顯示錯誤
+                        console.error('無法複製文本: ', err);
+                        alert('複製失敗，請手動複製。');
+                    });
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>
